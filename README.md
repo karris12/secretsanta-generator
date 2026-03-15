@@ -108,8 +108,10 @@ secretsanta-generator/
 ## 📸 Screenshots
 
 | Welcome Page | Add Names | Generated Matches |
-|---|---|---|
-| __ | __ | __ |
+![Welcome Page](images/welcome-page.png)
+![Add Names](images/add-names.png)
+![Matches](images/matches.png)
+
 
 ---
 
