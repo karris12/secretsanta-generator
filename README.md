@@ -109,7 +109,7 @@ secretsanta-generator/
 
 | Welcome Page | Add Names | Generated Matches |
 |---|---|---|
-| __ | _(add screenshot)_ | _(add screenshot)_ |
+| __ | __ | __ |
 
 ---
 
