@@ -1,71 +1,116 @@
-# Secret Santa Generator Application :santa:
-  
-A __secret santa generator web application__ built using __Spring Boot technologies__, __Thymeleaf views__, __JPA__, __H2 Database__, and more. The project features Spring Model, View, and Controller (MVC) architecture and Service and Repository layers.
+# 🎅 Secret Santa Generator
 
-This project is based on the popular Christmas game __Secret Santa__ where friends draw names from a hat to decide who they are required to give a present to. This project allows users to add names, and the project randomly generates secret santa matches (it isn't as simple as creating random pairs). There are different solutions to the "Secret Santa problem" as the problem essentially creates a directed graph. 
+A Spring Boot web application that randomly generates Secret Santa matches from a list of names.
+Built and deployed through a full CI/CD pipeline using Jenkins, Docker, and security scanning tools.
 
-**Preview images** :small_red_triangle_down:
-<details>
-<summary>Some images of the application </summary> 
+🌐 **Live Demo:** http://<your-server-ip>:8090
 
-* Welcome Page
+---
 
-![Welcome](https://github.com/NotTheBest/secretsanta-generator/blob/master/preview-images/welcomepage.png?raw=true)
+## 🚀 CI/CD Pipeline
 
-* Add People
-
-![Add](https://github.com/NotTheBest/secretsanta-generator/blob/master/preview-images/addpage.png?raw=true)
-
-* Generate "Matches"
-
-![Matches](https://github.com/NotTheBest/secretsanta-generator/blob/master/preview-images/generatepage.png?raw=true)
-
-</details>
-
-## Running the application locally
-
-Secret Santa Generator is a Spring Boot application built using Maven. You can build a jar file and run it from the command line:
-
+This project is deployed via an automated Jenkins pipeline with the following stages:
 ```
-git clone https://github.com/NotTheBest/secretsanta-generator.git
+Git Checkout → Code Compile → SonarQube Analysis → OWASP Dependency Check → Code Build → Docker Build & Push → Deploy
+```
+
+| Stage | Tool | Purpose |
+|---|---|---|
+| Source control | GitHub | Version control & pipeline trigger |
+| Build | Maven | Compile and package the application |
+| Code quality | SonarQube | Static analysis and code smell detection |
+| Security scan | OWASP Dependency Check | CVE vulnerability scanning |
+| Containerization | Docker | Build and push image to Docker Hub |
+| Deployment | Docker | Run container on remote server |
+
+---
+
+## 🛠️ Tech Stack
+
+**Application**
+- Java 17
+- Spring Boot
+- Spring MVC (Model-View-Controller)
+- Thymeleaf (templating engine)
+- JPA & H2 in-memory database
+
+**DevOps**
+- Jenkins (CI/CD orchestration)
+- Maven (build tool)
+- SonarQube (code quality)
+- OWASP Dependency Check (security)
+- Docker & Docker Hub (containerization)
+- GitHub (source control)
+
+---
+
+## 🐳 Run with Docker (quickest way)
+```bash
+docker pull agodzo/santa123:latest
+docker run -d --name santa-app -p 8090:8080 agodzo/santa123:latest
+```
+
+Then open: `http://localhost:8090`
+
+---
+
+## 💻 Run Locally (without Docker)
+```bash
+git clone https://github.com/karris12/secretsanta-generator.git
 cd secretsanta-generator
-./mvnw package
-java -jar target/*.jar
-```
-You can then access the application here: http://localhost:8080/
-
-![Welcome](https://github.com/NotTheBest/secretsanta-generator/blob/master/preview-images/welcomepage.png?raw=true)
-
-Or you can run it from Maven directly using the Spring Boot Maven plugin.
-
-```
 ./mvnw spring-boot:run
 ```
 
-## Database Configuration
-This project uses an in-memory database (H2). If you would like to work on the project, enable the `http://localhost:8080/h2-console` via the property :
+Then open: `http://localhost:8080`
 
-```spring.h2.console.enabled=true```
+---
 
-in __application.properties__.
+## 🗄️ Database
 
-The database url used is `jdbc:h2:mem:testdb`.
-## About
+Uses an H2 in-memory database — no setup required.
 
-This project was a personal project to learn more about Spring development, database management, and industry application architecture.
+To access the H2 console, enable it in `application.properties`:
+```properties
+spring.h2.console.enabled=true
+```
+Then visit: `http://localhost:8080/h2-console`
+Database URL: `jdbc:h2:mem:testdb`
 
-A small summary of the skills showcased during this project: :small_red_triangle_down:
+---
 
-* Java Spring Core, HTML5, CSS and similar topics
-* Spring MVC Controller and View management & annotations
-* Spring Boot capabilities, annotations, usage, and deployment
-* Thymeleaf technology, syntax, usage, capabilities, more
-* Client/Server data transfer
-* JPA annotations and repository management
-* H2 in-memory database management
-* Software/web application development processes
-* MVC architecture along with DAO, model, service layers, and similar
-* Accessibility, web design
-* Web application debugging
-* Where Santa lives
-* More! :)
+## 📂 Project Structure
+```
+secretsanta-generator/
+├── src/
+│   ├── main/
+│   │   ├── java/        # Controllers, Services, Repositories, Models
+│   │   └── resources/   # Thymeleaf templates, application.properties
+│   └── test/
+├── Jenkinsfile           # Full CI/CD pipeline definition
+├── Dockerfile
+└── pom.xml
+```
+
+---
+
+## 🔑 Key Concepts Demonstrated
+
+- Spring MVC architecture with Service and Repository layers
+- Thymeleaf server-side rendering
+- JPA entity and repository management
+- Secret Santa matching algorithm (directed graph problem)
+- End-to-end CI/CD pipeline from commit to deployment
+- Container-based deployment with Docker
+- Automated security and code quality gates
+
+---
+
+## 📸 Screenshots
+
+| Welcome Page | Add Names | Generated Matches |
+|---|---|---|
+| _(add screenshot)_ | _(add screenshot)_ | _(add screenshot)_ |
+
+---
+
+*Built as a hands-on DevOps learning project — from Spring Boot development to full pipeline automation.*
